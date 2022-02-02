@@ -1,8 +1,7 @@
 import pygame
-from var import *
+from py.var import *
 
 class Character:
-	"""docstring for Character"""
 	def __init__(self,name,weapon,hp_max,damage):
 		self.__name = name
 		self.rect = pygame.Rect((20, 50), (50, 100))
@@ -31,8 +30,8 @@ class Character:
 	def get_coordinate(self):
 		return self.__coordinate
 
-	def set_coordinate(self,[x,y]):
-		self.__coordinate = [x,y]
+	def set_coordinate(self,coordinate):
+		self.__coordinate = coordinate
 
 	def go_to(self,x,y):
 		self.set_coordinate([x,y])
@@ -94,6 +93,7 @@ class soldier(Character):
 
 	def __init__(self,name,weapon,hp_max,damage):
 		super.__init__(name,weapon,hp_max,damage)
+		self.image = GIFImage('../assets/soldat.gif')
 
 		
 class nurse(Character):
@@ -102,6 +102,7 @@ class nurse(Character):
 	def __init__(self,name,weapon,hp_max,damage):
 		super.__init__(name,weapon,hp_max,damage)
 		self.__regenerate = 10
+		self.image = GIFImage('../assets/murs.gif')
 
 	def get_regenerate(self):
 		return self.__regenerate 
@@ -114,6 +115,7 @@ class dictator(Character):
 
 	def __init__(self,name,weapon,hp_max,damage):
 		super.__init__(name,weapon,hp_max,damage)
+		self.image = GIFImage('../assets/chef.gif')
 
 
 class sergeant(Character):
@@ -121,3 +123,4 @@ class sergeant(Character):
 
 	def __init__(self,name,weapon,hp_max,damage):
 		super.__init__(name,weapon,hp_max,damage)
+		self.image = GIFImage('../assets/p1.gif')

@@ -10,7 +10,8 @@ constante = {"position_centre":(root.winfo_screenwidth()/2,root.winfo_screenheig
 
 ################################### VARIABLES AVEC CODE COULEUR ###################################
 
-colors = {"white":(255, 255, 255),"red":(255, 0, 0),"black":(0, 0, 0),"green":(0, 255, 0),"purple":(170,74,227),"bleu":(22,125,203)}
+colors = {"white":(255, 255, 255),"red":(255, 0, 0),"black":(0, 0, 0),"green":(0, 255, 0),"purple":(170,74,227),"bleu":(22,125,203),
+            "grey":(200,200,200)}
 
 ################################### VARIABLES DES TOUCHES ###################################
 
