@@ -2,30 +2,33 @@ import pygame
 from py.var import *
 
 class Character:
-	def __init__(self,name,weapon,hp_max,damage):
+	def __init__(self,name,weapon,hp_max,damage,list_image,nb):
 		self.__name = name
 		self.rect = pygame.Rect((20, 50), (50, 100))
 		self.__weapon = weapon
 		self.__hp_max = hp_max
 		self.__hp = hp_max 
 		self.__damage = damage
-		self.__coordinate = [0,0]
+		self.__coordinate = constante['position_centre']
 		self.__speed = 10
 		self.move = {'top':True,'down':True,'left':True,'right':True}
+		self.list_image = list_image
+		self.image = list_image[0]
+		self.nb = nb
 
-	def move(self):
-		if touches['top']:
+	def ft_move(self): 
+		if (self.nb == 1 and  pygame.key.get_pressed()[pygame.K_z]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_UP]):
 			if self.move['top']:
-				self.get_coordinate(self.get_coordinate()[0],self.get_coordinate()[1]-self.get_speed())
-		if touches['down']:
+				self.set_coordinate([self.get_coordinate()[0],self.get_coordinate()[1]-self.get_speed()])
+		if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_s]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_DOWN]):
 			if self.move['down']:
-				self.get_coordinate(self.get_coordinate()[0],self.get_coordinate()[1]+self.get_speed())
-		if touches['left']:
+				self.set_coordinate([self.get_coordinate()[0],self.get_coordinate()[1]+self.get_speed()])
+		if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_q]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_LEFT]):
 			if self.move['left']:
-				self.get_coordinate(self.get_coordinate()[0]-self.get_speed(),self.get_coordinate()[1])
-		if touches['right']:
+				self.set_coordinate([self.get_coordinate()[0]-self.get_speed(),self.get_coordinate()[1]])
+		if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_d]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_RIGHT]):
 			if self.move['right']:
-				self.get_coordinate(self.get_coordinate()[0]+self.get_speed(),self.get_coordinate()[1])
+				self.set_coordinate([self.get_coordinate()[0]+self.get_speed(),self.get_coordinate()[1]])
 
 	def get_coordinate(self):
 		return self.__coordinate
@@ -42,6 +45,9 @@ class Character:
 	def set_hp(self,hp):
 		self.__hp = hp
 
+	def get_damage(self):
+		return self.__damage
+
 	def give_hp(self,hp):
 		self.__hp += hp
 
@@ -57,27 +63,27 @@ class Character:
 		return False
 
 	def attack(self,other):
-		if touches['attack']:
+		if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_SPACE]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_RETURN]):
 			if self.collision(other):
-				other.give_hp(-attack)
+				other.give_hp(-self.get_damage())
 
 	def wall(self):
-		if self.x <= 0 :
+		if self.get_coordinate()[0] <= 0 :
 			self.move['left'] = False
 		else :
 			self.move['left'] = True
 
-		if self.x >= constante['width']:
+		if self.get_coordinate()[0] >= constante['width']:
 			self.move['right'] = False
 		else:
 			self.move['right'] = True
 
-		if self.y <= 0:
+		if self.get_coordinate()[0] <= 0:
 			self.move['top'] = False
 		else:
 			self.move['top'] = True
 
-		if self.y >= constante['height']:
+		if self.get_coordinate()[1] >= constante['height']:
 			self.move['down'] = False
 		else:
 			self.move['down'] = True
@@ -85,6 +91,32 @@ class Character:
 	def random_position(self):
 		self.go_to(random.randint(0,constante['width']),random.randint(0,constante['height']))
 
+	def center_picture(self):
+		self.image.center = self.get_coordinate()
+
+	def frame_gestion(self):
+		if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_SPACE]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_RETURN]):
+			if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_q]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_LEFT]):
+				self.image = self.list_image[3]
+			if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_d]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_RIGHT]):
+				self.image = self.list_image[2]
+			else :
+				self.image = self.list_image[2]
+		else:
+			if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_q]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_LEFT]):
+				self.image = self.list_image[1]
+			if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_d]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_RIGHT]):
+				self.image = self.list_image[0]
+
+	def dead(self,other):
+		if self.get_hp() <= 0 :
+			self.set_coordinate(list(constante['bin_position']))
+			other.set_coordinate(list(constante['bin_position']))
+			return False
+		return True
+
+	def gestion(self):
+		self.rect.center = self.get_coordinate()
 
 ######################################################################################################################
 
