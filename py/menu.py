@@ -31,20 +31,20 @@ class MENU:
 				if i == 0:
 					self.choice_character[i] = Character('1','gun',1000,20,[list_obj_create[0][0],list_obj_create[1][0],list_obj_create[2][0],list_obj_create[3][0]],1)
 				else : 
-					self.choice_character[i] = Character('2','gun',1000,20,[list_obj_create[4][0],list_obj_create[5][0],list_obj_create[6][0],list_obj_create[7][0]],2)
+					self.choice_character[i] = Character('2','gun',1000,20,[list_obj_create[0][0],list_obj_create[1][0],list_obj_create[2][0],list_obj_create[3][0]],2)
 			elif self.choice_character[i] == 'dictator':
 				if i == 0:
-					self.choice_character[i] = Character('1','gun',1000,20,[list_obj_create[0][0],list_obj_create[1][0],list_obj_create[2][0],list_obj_create[3][0]],1)
+					self.choice_character[i] = Character('1','gun',1000,20,[list_obj_create[4][0],list_obj_create[5][0],list_obj_create[6][0],list_obj_create[7][0]],1)
 				else : 
 					self.choice_character[i] = Character('2','gun',1000,20,[list_obj_create[4][0],list_obj_create[5][0],list_obj_create[6][0],list_obj_create[7][0]],2)
 			elif self.choice_character[i] == 'murse':
 				if i == 0:
-					self.choice_character[i] = Character('1','gun',1000,20,[list_obj_create[0][0],list_obj_create[1][0],list_obj_create[2][0],list_obj_create[3][0]],1)
+					self.choice_character[i] = Character('1','gun',1000,20,[list_obj_create[8][0],list_obj_create[9][0],list_obj_create[10][0],list_obj_create[11][0]],1)
 				else : 
-					self.choice_character[i] = Character('2','gun',1000,20,[list_obj_create[4][0],list_obj_create[5][0],list_obj_create[6][0],list_obj_create[7][0]],2)
+					self.choice_character[i] = Character('2','gun',1000,20,[list_obj_create[8][0],list_obj_create[9][0],list_obj_create[10][0],list_obj_create[11][0]],2)
 			elif self.choice_character[i] == 'sergeant':
 				if i == 0:
-					self.choice_character[i] = Character('1','gun',1000,20,[list_obj_create[0][0],list_obj_create[1][0],list_obj_create[2][0],list_obj_create[3][0]],1)
+					self.choice_character[i] = Character('1','gun',1000,20,[list_obj_create[12][0],list_obj_create[13][0],list_obj_create[14][0],list_obj_create[15][0]],1)
 				else : 
-					self.choice_character[i] = Character('2','gun',1000,20,[list_obj_create[4][0],list_obj_create[5][0],list_obj_create[6][0],list_obj_create[7][0]],2)
+					self.choice_character[i] = Character('2','gun',1000,20,[list_obj_create[12][0],list_obj_create[13][0],list_obj_create[14][0],list_obj_create[15][0]],2)
 		return self.choice_character

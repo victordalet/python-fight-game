@@ -15,12 +15,11 @@ def main():
     for i in list_obj:
         image =  create_obj(i[0],i[1])
         list_obj_create += [image.get_image()]
+    print(list_obj_create)
     menus = MENU(Button('PLAY', 200, 40, (constante['position_centre'][0]-100,constante['position_centre'][1]-40), 0, screen, colors['grey'], colors['purple'], colors['white']),
                  Button('OPTION', 200, 40, (constante['position_centre'][0]-100,constante['position_centre'][1]+40), 0, screen, colors['grey'], colors['purple'], colors['white']),
                  Button('EXIT', 200, 40, (constante['position_centre'][0]-100,constante['position_centre'][1]+120), 0, screen, colors['grey'], colors['purple'], colors['white']))
     p1,p2 = menus.ft_choice_character(list_obj_create)
-    p1 = Character('1','gun',1000,20,[list_obj_create[0][0],list_obj_create[1][0],list_obj_create[2][0],list_obj_create[3][0]],1)
-    p2 = Character('2','gun',1000,20,[list_obj_create[4][0],list_obj_create[5][0],list_obj_create[6][0],list_obj_create[7][0]],2)
     p1.set_coordinate([20,500])
     p2.set_coordinate([800,500])
     perso = [p1,p2]
