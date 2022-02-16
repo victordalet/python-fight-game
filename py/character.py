@@ -15,14 +15,16 @@ class Character:
 		self.list_image = list_image
 		self.image = list_image[0]
 		self.nb = nb
+		self.speed_atack = 150
+		self.sens = 'right'
 
 	def ft_move(self): 
-		if (self.nb == 1 and  pygame.key.get_pressed()[pygame.K_z]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_UP]):
+		"""if (self.nb == 1 and  pygame.key.get_pressed()[pygame.K_z]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_UP]):
 			if self.move['top']:
 				self.set_coordinate([self.get_coordinate()[0],self.get_coordinate()[1]-self.get_speed()])
 		if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_s]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_DOWN]):
 			if self.move['down']:
-				self.set_coordinate([self.get_coordinate()[0],self.get_coordinate()[1]+self.get_speed()])
+				self.set_coordinate([self.get_coordinate()[0],self.get_coordinate()[1]+self.get_speed()])"""
 		if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_q]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_LEFT]):
 			if self.move['left']:
 				self.set_coordinate([self.get_coordinate()[0]-self.get_speed(),self.get_coordinate()[1]])
@@ -66,6 +68,7 @@ class Character:
 		if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_SPACE]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_RETURN]):
 			if self.collision(other):
 				other.give_hp(-self.get_damage())
+				other.set_coordinate([other.get_coordinate()[0]+self.speed_atack,other.get_coordinate()[1]])
 
 	def wall(self):
 		if self.get_coordinate()[0] <= 0 :
@@ -101,12 +104,22 @@ class Character:
 			if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_d]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_RIGHT]):
 				self.image = self.list_image[2]
 			else :
-				self.image = self.list_image[2]
+				if self.sens == 'right':
+					self.image = self.list_image[2]
+				else :
+					self.image = self.list_image[3]
 		else:
 			if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_q]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_LEFT]):
 				self.image = self.list_image[1]
+				self.sens = 'left'
 			if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_d]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_RIGHT]):
 				self.image = self.list_image[0]
+				self.sens = 'right'
+			else : 
+				if self.sens == 'right':
+					self.image = self.list_image[0]
+				else :
+					self.image = self.list_image[1]
 
 	def dead(self,other):
 		if self.get_hp() <= 0 :

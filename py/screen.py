@@ -1,13 +1,13 @@
 import pygame
 from py.var import colors,constante
 
-def screen_update(screen,menus,perso,list_obj,pv):
+def screen_update(screen,menus,perso,list_obj,pv,persos):
     screen.fill(colors["black"])
     ##############################################
     menus.display_button()  
     for i in list_obj:
-        for j in pv:
-            if j > 0:
+        for j in perso:
+            if i[0] == j.image:
                 screen.blit(i[1],i[0])
     ##############################################
     label_hp_perso1 = pygame.font.Font(None,30).render('hp : '+str(perso[0].get_hp()), 1, colors["bleu"])
