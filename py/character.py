@@ -136,36 +136,45 @@ class Character:
 class soldier(Character):
 	"""docstring for soldier"""
 
-	def __init__(self,name,weapon,hp_max,damage):
-		super.__init__(name,weapon,hp_max,damage)
-		self.image = GIFImage('../assets/soldat.gif')
+	def __init__(self,name,weapon,hp_max,damage,list_image,nb):
+		super().__init__(name,weapon,hp_max,damage,list_image,nb)
 
-		
+	def spe(self):
+		pass
+
+
 class nurse(Character):
 	"""docstring for nurse"""
 
-	def __init__(self,name,weapon,hp_max,damage):
-		super.__init__(name,weapon,hp_max,damage)
-		self.__regenerate = 10
-		self.image = GIFImage('../assets/murs.gif')
+	def __init__(self,name,weapon,hp_max,damage,list_image,nb):
+		super().__init__(name,weapon,hp_max,damage,list_image,nb)
+		self.__regenerate = 1
 
 	def get_regenerate(self):
 		return self.__regenerate 
 
 	def care(self):
-		super.give_hp(self.get_regenerate())
+		super().give_hp(self.get_regenerate())
+
+	def spe(self):
+		self.care()
+
 
 class dictator(Character):
 	"""docstring for dictator"""
 
-	def __init__(self,name,weapon,hp_max,damage):
-		super.__init__(name,weapon,hp_max,damage)
-		self.image = GIFImage('../assets/chef.gif')
+	def __init__(self,name,weapon,hp_max,damage,list_image,nb):
+		super().__init__(name,weapon,hp_max,damage,list_image,nb)
+
+	def spe(self):
+		pass
 
 
 class sergeant(Character):
 	"""docstring for sergeant"""
 
-	def __init__(self,name,weapon,hp_max,damage):
-		super.__init__(name,weapon,hp_max,damage)
-		self.image = GIFImage('../assets/p1.gif')
+	def __init__(self,name,weapon,hp_max,damage,list_image,nb):
+		super().__init__(name,weapon,hp_max,damage,list_image,nb)
+
+	def spe(self):
+		pass

@@ -41,6 +41,7 @@ def main():
                 i.frame_gestion()
                 i.center_picture()
                 i.gestion()
+                i.spe()
                 print(i.get_coordinate())
         for event in pygame.event.get():
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_F4 and (
