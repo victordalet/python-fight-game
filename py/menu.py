@@ -39,7 +39,7 @@ class MENU:
 					self.choice_character[i] = dictator('2','gun',1000,20,[list_obj_create[4][0],list_obj_create[5][0],list_obj_create[6][0],list_obj_create[7][0]],2)
 			elif self.choice_character[i] == 'murse':
 				if i == 0:
-					self.choice_character[i] = nurse('1','gun',1000,20,[list_obj_create[8][0],list_obj_create[9][0],list_obj_create[10][0],list_obj_create[11][0]],1)
+					self.choice_character[i] = nurse('1','gun',1000,20,[list_obj_create[8][0],list_obj_create[9][0],list_obj_create[10][0],list_obj_create[11][0]],1,)
 				else : 
 					self.choice_character[i] = nurse('2','gun',1000,20,[list_obj_create[8][0],list_obj_create[9][0],list_obj_create[10][0],list_obj_create[11][0]],2)
 			elif self.choice_character[i] == 'sergeant':

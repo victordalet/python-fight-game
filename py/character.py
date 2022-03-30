@@ -64,11 +64,12 @@ class Character:
 			return True
 		return False
 
-	def attack(self,other):
+	def attack(self,other,bar):
 		if (self.nb == 1 and pygame.key.get_pressed()[pygame.K_SPACE]) or (self.nb == 2 and pygame.key.get_pressed()[pygame.K_RETURN]):
 			if self.collision(other):
 				other.give_hp(-self.get_damage())
 				other.set_coordinate([other.get_coordinate()[0]+self.speed_atack,other.get_coordinate()[1]])
+				bar.get_damage(self.get_damage())
 
 	def wall(self):
 		if self.get_coordinate()[0] <= 0 :
@@ -142,19 +143,21 @@ class soldier(Character):
 	def spe(self):
 		pass
 
-
 class nurse(Character):
 	"""docstring for nurse"""
 
-	def __init__(self,name,weapon,hp_max,damage,list_image,nb):
+	def __init__(self,name,weapon,hp_max,damage,list_image,nb,bar=False):
 		super().__init__(name,weapon,hp_max,damage,list_image,nb)
 		self.__regenerate = 1
+		self.bar = bar
 
 	def get_regenerate(self):
 		return self.__regenerate 
 
 	def care(self):
-		super().give_hp(self.get_regenerate())
+		if self.hp < 1000:
+			super().give_hp(self.get_regenerate())
+			self.bar.sprite.get_health(self.get_regenerate())
 
 	def spe(self):
 		self.care()

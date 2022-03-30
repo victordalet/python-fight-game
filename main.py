@@ -7,6 +7,7 @@ from py.button import Button
 from py.screen import *
 from py.assets import *
 from py.action import *
+from py.healt_bar import * 
 
 def main():
     pygame.init()
@@ -20,6 +21,7 @@ def main():
                  Button('OPTION', 200, 40, (constante['position_centre'][0]-100,constante['position_centre'][1]+40), 0, screen, colors['grey'], colors['purple'], colors['white']),
                  Button('EXIT', 200, 40, (constante['position_centre'][0]-100,constante['position_centre'][1]+120), 0, screen, colors['grey'], colors['purple'], colors['white']))
     p1,p2 = menus.ft_choice_character(list_obj_create)
+    healt_bar_p1,healt_bar_p2 = Health_bar(screen,(0,10)),Health_bar(screen,(0,60))
     p1.set_coordinate([20,500])
     p2.set_coordinate([800,500])
     perso = [p1,p2]
@@ -31,8 +33,8 @@ def main():
         if click:
             play,click = click_button(menus)
         if play:
-            p1.attack(p2)
-            p2.attack(p1)
+            p1.attack(p2,healt_bar_p2)
+            p2.attack(p1,healt_bar_p1)
             play = p1.dead(p2)
             play = p2.dead(p1)
             for i in perso:
