@@ -140,7 +140,7 @@ class soldier(Character):
 	def __init__(self,name,weapon,hp_max,damage,list_image,nb):
 		super().__init__(name,weapon,hp_max,damage,list_image,nb)
 
-	def spe(self):
+	def spe(self,bar):
 		pass
 
 class nurse(Character):
@@ -154,13 +154,16 @@ class nurse(Character):
 	def get_regenerate(self):
 		return self.__regenerate 
 
-	def care(self):
-		if self.hp < 1000:
-			super().give_hp(self.get_regenerate())
-			self.bar.sprite.get_health(self.get_regenerate())
+	def get_up(self):
+		return self.__hp
 
-	def spe(self):
-		self.care()
+	def care(self,bar):
+		if self.get_hp() < 1000:
+			super().give_hp(self.get_regenerate())
+			bar.get_health(self.get_regenerate())
+
+	def spe(self,bar):
+		self.care(bar)
 
 
 class dictator(Character):
@@ -169,7 +172,7 @@ class dictator(Character):
 	def __init__(self,name,weapon,hp_max,damage,list_image,nb):
 		super().__init__(name,weapon,hp_max,damage,list_image,nb)
 
-	def spe(self):
+	def spe(self,bar):
 		pass
 
 
@@ -179,5 +182,5 @@ class sergeant(Character):
 	def __init__(self,name,weapon,hp_max,damage,list_image,nb):
 		super().__init__(name,weapon,hp_max,damage,list_image,nb)
 
-	def spe(self):
+	def spe(self,bar):
 		pass

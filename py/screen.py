@@ -1,7 +1,7 @@
 import pygame
 from py.var import colors,constante
 
-def screen_update(screen,menus,perso,list_obj,pv,persos):
+def screen_update(screen,menus,perso,list_obj,pv,persos,healt_bar_p1,healt_bar_p2):
     screen.fill(colors["black"])
     ##############################################
     menus.display_button()  
@@ -14,5 +14,8 @@ def screen_update(screen,menus,perso,list_obj,pv,persos):
     screen.blit(label_hp_perso1, (constante['width']/2-100,10))
     label_hp_perso2 = pygame.font.Font(None,30).render('hp : '+str(perso[1].get_hp()), 1, colors["red"])
     screen.blit(label_hp_perso2, (constante['width']/2+100,10))
+    ##############################################
+    healt_bar_p1.update()
+    healt_bar_p2.update()
     ##############################################
     pygame.display.update()

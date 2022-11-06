@@ -43,14 +43,15 @@ def main():
                 i.frame_gestion()
                 i.center_picture()
                 i.gestion()
-                i.spe()
                 print(i.get_coordinate())
+            p1.spe(healt_bar_p1)
+            p2.spe(healt_bar_p2)
         for event in pygame.event.get():
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_F4 and (
                     key[pygame.K_LALT] or key[pygame.K_LALT])):
                 pygame.quit()
                 sys.exit()
         ###############################################################################################
-       	screen_update(screen,menus,[p1,p2],list_obj_create,[p1.get_hp(),p2.get_hp()],[p1,p2])
+       	screen_update(screen,menus,[p1,p2],list_obj_create,[p1.get_hp(),p2.get_hp()],[p1,p2],healt_bar_p1,healt_bar_p2)
 
 main()
